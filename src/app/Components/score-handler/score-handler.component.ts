@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-score-handler',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreHandlerComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() {
+  }
+
 
   ngOnInit(): void {
+
   }
 
 }
