@@ -8,6 +8,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ScoreHandlerComponent } from './Components/score-handler/score-handler.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatChipsModule} from '@angular/material/chips';
         BrowserAnimationsModule,
         MatProgressSpinnerModule,
         MatButtonModule,
-        MatChipsModule
+        MatChipsModule,
+        MatTabsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
