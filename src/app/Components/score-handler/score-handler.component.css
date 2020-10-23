@@ -1,10 +1,14 @@
-.col{
-  background: lightblue;
-}
+/*.col{*/
+/*  background: lightblue;*/
+/*}*/
 button{
   width: 100%;
 }
 
 .left-player{
+  border: 2px solid red;
+}
+
+.right-player{
   border: 2px solid red;
 }

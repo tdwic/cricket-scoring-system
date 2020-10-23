@@ -11,37 +11,37 @@
       <div class="col pt-3">
         1st Ball
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>2</mat-chip>
+          <mat-chip color="primary" *ngIf="FirstBallMarks != null" selected>{{FirstBallMarks}}</mat-chip>
         </mat-chip-list>
       </div>
       <div class="col pt-3">
         2st Ball
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>1</mat-chip>
+          <mat-chip color="primary" *ngIf="SecondBallMarks != null" selected>{{SecondBallMarks}}</mat-chip>
         </mat-chip-list>
       </div>
       <div class="col pt-3">
         3st Ball
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>2</mat-chip>
+          <mat-chip color="primary" *ngIf="ThirdBallMarks != null" selected>{{ThirdBallMarks}}</mat-chip>
         </mat-chip-list>
       </div>
       <div class="col pt-3">
         4st Ball
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>2</mat-chip>
+          <mat-chip color="primary" *ngIf="FourthBallMarks != null" selected>{{FourthBallMarks}}</mat-chip>
         </mat-chip-list>
       </div>
       <div class="col pt-3">
         5st Ball
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>3</mat-chip>
+          <mat-chip color="primary" *ngIf="FifthBallMarks != null" selected>{{FifthBallMarks}}</mat-chip>
         </mat-chip-list>
       </div>
       <div class="col pt-3">
         6st Ball
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" selected>1</mat-chip>
+          <mat-chip color="primary" *ngIf="SixthBallMarks != null" selected>{{SixthBallMarks}}</mat-chip>
         </mat-chip-list>
       </div>
     </div>
@@ -52,7 +52,22 @@
 
         <div class="row">
           <div class="col-md-5 pt-3">
-            <div class="left-player">
+
+            <div class="add-batsman1" *ngIf="!LeftSideBatsMan">
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-success" (click)="AddNewBatsmanLeftSide()">Add new Batsman</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="left-player" *ngIf="LeftSideBatsMan">
+              <div class="row">
+                <div class="col">
+                  <span>Demo Player 1</span>
+                </div>
+              </div>
+
               <div class="row">
                 <!--                <mat-tab-group mat-align-tabs="start">-->
                 <!--                  <mat-tab label="First Player">Content 1</mat-tab>-->
@@ -104,10 +119,26 @@
             </div>
           </div>
           <div class="col-md-2 pt-3">
-
+            10/1 <br/> 0.2 Overs
           </div>
           <div class="col-md-5 pt-3">
-            <div class="left-player">
+
+            <div class="add-batsman2" *ngIf="!RightSideBatsMan">
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-success" (click)="AddNewBatsmanRightSide()" >Add new Batsman</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="right-player" *ngIf="RightSideBatsMan">
+
+              <div class="row">
+                <div class="col">
+                  <span>Demo Player 2</span>
+                </div>
+              </div>
+
               <div class="row">
                 <!--                <mat-tab-group mat-align-tabs="start">-->
                 <!--                  <mat-tab label="First Player">Content 1</mat-tab>-->
@@ -159,7 +190,18 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col pt-3">b1</div>
+          <div class="col pt-3">b2</div>
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+
+      <div class="col">
         <div class="row">
           <div class="col pt-3">
             <button type="button" class="btn btn-danger">Bowled</button>
@@ -219,15 +261,9 @@
             <button type="button" class="btn btn-dark">Panalty 1</button>
           </div>
         </div>
-
       </div>
+
       <div class="col">
-
-        <div class="row">
-          <div class="col pt-3">b1</div>
-          <div class="col pt-3">b2</div>
-        </div>
-
         <div class="row">
           <div class="col pt-3">
             <button type="button" class="btn btn-danger">Run Out</button>
@@ -287,9 +323,10 @@
             <button type="button" class="btn btn-dark">Panalty 2</button>
           </div>
         </div>
-
       </div>
+
     </div>
+
   </div>
 </div>
 

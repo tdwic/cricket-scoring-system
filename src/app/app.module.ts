@@ -9,11 +9,13 @@ import { ScoreHandlerComponent } from './Components/score-handler/score-handler.
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ScorePublisherComponent } from './Components/score-publisher/score-publisher.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreHandlerComponent
+    ScoreHandlerComponent,
+    ScorePublisherComponent
   ],
     imports: [
         BrowserModule,
