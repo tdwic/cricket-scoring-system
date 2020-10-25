@@ -19,6 +19,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { MatchCreationComponent } from './Components/match-creation/match-creation.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     ScorePreviewerComponent,
     TeamCreationComponent,
     TeamOneCreationComponent,
-    TeamTwoCreationComponent
+    TeamTwoCreationComponent,
+    MatchCreationComponent
   ],
 
     entryComponents:[
@@ -47,7 +50,8 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

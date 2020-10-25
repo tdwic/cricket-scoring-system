@@ -180,7 +180,7 @@ export class TeamOneCreationComponent implements OnInit {
 
     this.playersList.push(this.player);
 
-    this.COMMON_SERVICE.NewPlayerList(this.playersList).subscribe(res=>{
+    this.COMMON_SERVICE.NewPlayerListTeamOne(this.playersList).subscribe(res=>{
       console.log(res);
       alert("Players added");
     },error => {

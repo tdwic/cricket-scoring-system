@@ -13,7 +13,15 @@ export class CommonService {
 
   //Get Methods
   public getTeamOneAllPlayers():Observable<any>{
-    return this._http_.get<any>(this._apiUrl_+"/player");
+    return this._http_.get<any>(this._apiUrl_+"/teamOnePlayers");
+  }
+
+  public getTeamTwoAllPlayers():Observable<any>{
+    return this._http_.get<any>(this._apiUrl_+"/teamTwoPlayers");
+  }
+
+  public getAllTeams():Observable<any>{
+    return this._http_.get<any>(this._apiUrl_+"/team");
   }
   //Get Methods
 
@@ -23,8 +31,12 @@ export class CommonService {
     return this._http_.post<any>(this._apiUrl_+"/team",Team);
   }
 
-  public NewPlayerList(Players){
+  public NewPlayerListTeamOne(Players){
     return this._http_.post<any>(this._apiUrl_+"/teamOnePlayers",Players);
+  }
+
+  public NewPlayerListTeamTwo(Players){
+    return this._http_.post<any>(this._apiUrl_+"/teamTwoPlayers",Players);
   }
 
   //Post Methods

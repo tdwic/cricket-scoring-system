@@ -1,3 +1,3 @@
 <br/>&nbsp;
-<button type="button" (click)="teamOneCreationDialog()" class="btn btn-success">Team One</button> &nbsp;
-<button type="button" (click)="teamTwoCreationDialog()" class="btn btn-success">Team Two</button>
+<button type="button" [disabled]="TeamOneButtonEnable" (click)="teamOneCreationDialog()" class="btn btn-success">Team One</button> &nbsp;
+<button type="button" [disabled]="TeamTwoButtonEnable" (click)="teamTwoCreationDialog()" class="btn btn-success">Team Two</button>

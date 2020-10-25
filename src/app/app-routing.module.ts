@@ -6,6 +6,7 @@ import {ScorePreviewerComponent} from './Components/score-previewer/score-previe
 import {TeamCreationComponent} from './Components/team-creation/team-creation.component';
 import {TeamOneCreationComponent} from './Components/team-creation/team-one-creation/team-one-creation.component';
 import {TeamTwoCreationComponent} from './Components/team-creation/team-two-creation/team-two-creation.component';
+import {MatchCreationComponent} from './Components/match-creation/match-creation.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path : 'team-two-creation',
     component : TeamTwoCreationComponent
+  },
+  {
+    path : 'match-creation',
+    component : MatchCreationComponent
   }
 ];
 
