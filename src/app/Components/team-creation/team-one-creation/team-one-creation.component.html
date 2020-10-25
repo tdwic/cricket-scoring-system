@@ -1,0 +1,485 @@
+<div class="container-fluid main-frame">
+  <form [formGroup]="teamCreationForm" (ngSubmit)="submitTeam()">
+  <div class="row">
+    <div class="col">
+      <div class="md-form mt-0 mb-2">
+        <div class="controllersContainer">
+          <mat-form-field>
+            <input matInput formControlName="teamName" placeholder="Team Name">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="md-form mt-0 mb-2">
+        <div class="controllersContainer">
+          <mat-form-field>
+            <input matInput formControlName="teamLogName" placeholder="Team Logo">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player1Name" placeholder="Player 1 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player1BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player1BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player2Name" placeholder="Player 2 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player2BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player2BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player3Name" placeholder="Player 3 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player3BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player3BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player4Name" placeholder="Player 4 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player4BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player4BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player5Name" placeholder="Player 5 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player5BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player5BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player6Name" placeholder="Player 6 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player6BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player6BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player7Name" placeholder="Player 7 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player7BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player7BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player8Name" placeholder="Player 8 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player8BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player8BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player9Name" placeholder="Player 9 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player9BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player9BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player10Name" placeholder="Player 10 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player10BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player10BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="player11Name" placeholder="Player 11 Name">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Batting Style</mat-label>
+              <select formControlName="player11BattingStyle" matNativeControl>
+                <option value="Left Handed">Left Handed</option>
+                <option value="Right Handed">Right Handed</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Bowling Style</mat-label>
+              <select formControlName="player11BowlingStyle" matNativeControl>
+                <option value="Left Arm">Left Arm</option>
+                <option value="Right Arm">Right Arm</option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-lg-10"></div>
+      <div class="col-md-2 col-lg-2">
+        <button mat-raised-button color="primary" type="submit">Submit</button>&nbsp;
+        <button mat-raised-button mat-dialog-close="false" color="warn" type="reset">Cancel</button>
+      </div>
+    </div>
+
+  </form>
+</div>

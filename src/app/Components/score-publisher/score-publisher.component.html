@@ -1,2 +1,4 @@
 <p>score-publisher works!</p>
 <p>{{Messagess}}</p>
+<button type="button" *ngIf="!trigger" disabled class="btn btn-warning">Published</button>
+<button type="button" *ngIf="trigger" class="btn btn-success">Need To Publish</button>

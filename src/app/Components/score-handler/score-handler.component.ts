@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {InteractionServiceService} from '../../interaction-service.service';
+import {CommonService} from '../../Services/common.service';
+import {Player} from '../../Models/player';
 
 @Component({
   selector: 'app-score-handler',
@@ -20,11 +21,13 @@ export class ScoreHandlerComponent implements OnInit {
   FifthBallMarks: string;
   SixthBallMarks: string;
 
-  Message = "parent";
+  TeamOnePlayersList : Player[];
+  TeamTwoPlayersList : Player[];
 
+  Message = "parent";
   channel = new BroadcastChannel('channel-name');
 
-  constructor(private _messageServie : InteractionServiceService) {
+  constructor(private COMMON_SERVICE : CommonService) {
   }
 
 
@@ -33,9 +36,17 @@ export class ScoreHandlerComponent implements OnInit {
   }
 
   AddNewBatsmanLeftSide(){
-    this.LeftSideBatsMan = !this.LeftSideBatsMan;
-    this._messageServie.sendMessage("btn clicked")
-    this.channel.postMessage("hi alls")
+
+    // this.channel.postMessage([{name:'tahrindu',age:23},{name:'tahrindu2',age:223}])
+
+    this.COMMON_SERVICE.getTeamOneAllPlayers().subscribe(res =>{
+      this.TeamOnePlayersList  = res;
+      console.log(this.TeamOnePlayersList);
+      this.LeftSideBatsMan = !this.LeftSideBatsMan;
+    },error => {
+      console.log(error);
+    })
+
   }
 
   AddNewBatsmanRightSide(){

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {InteractionServiceService} from '../../interaction-service.service';
 
 @Component({
   selector: 'app-score-publisher',
@@ -11,13 +10,16 @@ export class ScorePublisherComponent implements OnInit {
   channel = new BroadcastChannel('channel-name');
   Messagess : string
   sdessagess : string
+  trigger: boolean
 
-  constructor(private _messageServie : InteractionServiceService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
     this.channel.addEventListener('message',e =>{
-      this.Messagess = e.data;
+      console.log(e.data);
+      this.Messagess = e.data.name;
+      this.trigger = true;
     })
   }
 
