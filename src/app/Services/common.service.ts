@@ -11,8 +11,21 @@ export class CommonService {
 
   constructor(private _http_:HttpClient) { }
 
+  //Get Methods
   public getTeamOneAllPlayers():Observable<any>{
     return this._http_.get<any>(this._apiUrl_+"/player");
   }
+  //Get Methods
 
+
+  //Post Methods
+  public NewTeam(Team){
+    return this._http_.post<any>(this._apiUrl_+"/team",Team);
+  }
+
+  public NewPlayerList(Players){
+    return this._http_.post<any>(this._apiUrl_+"/teamOnePlayers",Players);
+  }
+
+  //Post Methods
 }

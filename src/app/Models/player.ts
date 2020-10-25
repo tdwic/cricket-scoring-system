@@ -1,51 +1,56 @@
 export class Player{
-  private _playerID:string;
-  private _playerName:string;
-  private _playerTeamId:string;
-  private _battingStyle:string;
-  private _bowlingStyle:string
+  private playerID:string;
+  private playerName:string;
+  private playerTeamId:number;
+  private battingStyle:string;
+  private bowlingStyle:string
 
 
-  constructor() {
+  constructor(playerID: string, playerName: string, playerTeamId: number, battingStyle: string, bowlingStyle: string) {
+    this.playerID = playerID;
+    this.playerName = playerName;
+    this.playerTeamId = playerTeamId;
+    this.battingStyle = battingStyle;
+    this.bowlingStyle = bowlingStyle;
   }
 
-  get playerID(): string {
-    return this._playerID;
+  get PlayerID(): string {
+    return this.playerID;
   }
 
-  set playerID(value: string) {
-    this._playerID = value;
+  set PlayerID(value: string) {
+    this.playerID = value;
   }
 
-  get playerName(): string {
-    return this._playerName;
+  get PlayerName(): string {
+    return this.playerName;
   }
 
-  set playerName(value: string) {
-    this._playerName = value;
+  set PlayerName(value: string) {
+    this.playerName = value;
   }
 
-  get playerTeamId(): string {
-    return this._playerTeamId;
+  get PlayerTeamId(): number {
+    return this.playerTeamId;
   }
 
-  set playerTeamId(value: string) {
-    this._playerTeamId = value;
+  set PlayerTeamId(value: number) {
+    this.playerTeamId = value;
   }
 
-  get battingStyle(): string {
-    return this._battingStyle;
+  get BattingStyle(): string {
+    return this.battingStyle;
   }
 
-  set battingStyle(value: string) {
-    this._battingStyle = value;
+  set BattingStyle(value: string) {
+    this.battingStyle = value;
   }
 
-  get bowlingStyle(): string {
-    return this._bowlingStyle;
+  get BowlingStyle(): string {
+    return this.bowlingStyle;
   }
 
-  set bowlingStyle(value: string) {
-    this._bowlingStyle = value;
+  set BowlingStyle(value: string) {
+    this.bowlingStyle = value;
   }
 }
