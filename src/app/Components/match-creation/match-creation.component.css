@@ -1,0 +1,7 @@
+.controllersContainer {
+  width: 100%;
+}
+
+.controllersContainer > * {
+  width: 100%;
+}

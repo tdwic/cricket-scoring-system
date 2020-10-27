@@ -1,4 +1,42 @@
-<p>match-creation works!</p>
-<div fxLayoutAlign="center center" fxFlexFill>
-  
+<div class="container-fluid main-frame">
+  <mat-card fxFlex="100">
+  <form [formGroup]="matchCreationForm" (ngSubmit)="createMatch()">
+    <div class="row">
+      SL VS Ind
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field appearance="legacy">
+              <mat-label>Select Batting Team</mat-label>
+              <mat-select formControlName="battingTeam" >
+                <mat-option *ngFor="let team of teamsList" value="{{team.teamID}}">{{team.teamName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="md-form mt-0 mb-2">
+          <div class="controllersContainer">
+            <mat-form-field>
+              <input matInput formControlName="noOfOvers" placeholder="No Of Overs">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-lg-10"></div>
+      <div class="col-md-2 col-lg-2">
+        <button mat-raised-button color="primary" [disabled]="submitButtonEnable" type="submit">Submit</button>&nbsp;
+        <button mat-raised-button mat-dialog-close="false" color="warn" type="reset">Cancel</button>
+      </div>
+    </div>
+
+  </form>
+  </mat-card>
 </div>

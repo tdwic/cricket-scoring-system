@@ -77,9 +77,9 @@ export class TeamOneCreationComponent implements OnInit {
 
     this.COMMON_SERVICE.NewTeam(this.team).subscribe(res =>{
       console.log(res);
-      this.team.TeamId = res.teamID;
+      this.team.teamID = res.teamID;
 
-      this.AddTeamPlayers(this.team.TeamId);
+      this.AddTeamPlayers(this.team.teamID);
 
     },error => {
       console.log("db error");
@@ -180,7 +180,7 @@ export class TeamOneCreationComponent implements OnInit {
 
     this.playersList.push(this.player);
 
-    this.COMMON_SERVICE.NewPlayerListTeamOne(this.playersList).subscribe(res=>{
+    this.COMMON_SERVICE.NewPlayerList(this.playersList).subscribe(res=>{
       console.log(res);
       alert("Players added");
     },error => {

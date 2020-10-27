@@ -11,8 +11,8 @@ import {CommonService} from '../../Services/common.service';
 })
 export class TeamCreationComponent implements OnInit {
 
-  TeamOneButtonEnable : boolean = true;
-  TeamTwoButtonEnable : boolean = true;
+  TeamOneButtonEnable : boolean = false;
+  TeamTwoButtonEnable : boolean = false;
 
   constructor(private _MatDialog: MatDialog,
               private COMMON_SERVICE : CommonService) { }
@@ -40,29 +40,29 @@ export class TeamCreationComponent implements OnInit {
   }
 
   teamOnePlayersFetch(){
-    this.COMMON_SERVICE.getTeamOneAllPlayers().subscribe(res => {
-      console.log(res);
-      if (res.length == 0){
-        this.TeamOneButtonEnable = false;
-      }else {
-        this.TeamOneButtonEnable = true;
-      }
-    },error => {
-      console.log("err"+error);
-    });
+    // this.COMMON_SERVICE.getTeamOneAllPlayers().subscribe(res => {
+    //   console.log(res);
+    //   if (res.length == 0){
+    //     this.TeamOneButtonEnable = false;
+    //   }else {
+    //     this.TeamOneButtonEnable = true;
+    //   }
+    // },error => {
+    //   console.log("err"+error);
+    // });
   }
 
   teamTwoPlayersFetch(){
-    this.COMMON_SERVICE.getTeamTwoAllPlayers().subscribe(res => {
-      console.log(res);
-      if (res.length == 0){
-        this.TeamTwoButtonEnable = false;
-      }else {
-        this.TeamTwoButtonEnable = true;
-      }
-    },error => {
-      console.log("err"+error);
-    });
+    // this.COMMON_SERVICE.getTeamTwoAllPlayers().subscribe(res => {
+    //   console.log(res);
+    //   if (res.length == 0){
+    //     this.TeamTwoButtonEnable = false;
+    //   }else {
+    //     this.TeamTwoButtonEnable = true;
+    //   }
+    // },error => {
+    //   console.log("err"+error);
+    // });
   }
 
 }

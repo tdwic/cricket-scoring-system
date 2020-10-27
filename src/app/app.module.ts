@@ -21,6 +21,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatchCreationComponent } from './Components/match-creation/match-creation.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatListModule} from '@angular/material/list';
+import { AddNewBowlerComponent } from './Components/score-handler/add-new-bowler/add-new-bowler.component';
+import { AddNewBatsmanComponent } from './Components/score-handler/add-new-batsman/add-new-batsman.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +36,17 @@ import {MatCardModule} from '@angular/material/card';
     TeamCreationComponent,
     TeamOneCreationComponent,
     TeamTwoCreationComponent,
-    MatchCreationComponent
+    MatchCreationComponent,
+    AddNewBowlerComponent,
+    AddNewBatsmanComponent
   ],
 
     entryComponents:[
       TeamOneCreationComponent,
-      TeamTwoCreationComponent
+      TeamTwoCreationComponent,
+      MatchCreationComponent,
+      AddNewBatsmanComponent,
+      AddNewBowlerComponent
     ],
   imports: [
     BrowserModule,
@@ -51,7 +61,10 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatListModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

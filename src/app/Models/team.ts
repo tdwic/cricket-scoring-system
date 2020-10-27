@@ -1,8 +1,12 @@
 export class Team{
 
-  private teamID:number;
-  private teamName:string;
-  private teamLogoName:string;
+  // private teamID:number;
+  // private teamName:string;
+  // private teamLogoName:string;
+
+  teamID:number;
+  teamName:string;
+  teamLogoName:string;
 
 
   constructor(teamId: number, teamName: string, teamLogoName: string) {
@@ -10,29 +14,29 @@ export class Team{
     this.teamName = teamName;
     this.teamLogoName = teamLogoName;
   }
-
-
-  get TeamId(): number {
-    return this.teamID;
-  }
-
-  set TeamId(value: number) {
-    this.teamID = value;
-  }
-
-  get TeamName(): string {
-    return this.teamName;
-  }
-
-  set TeamName(value: string) {
-    this.teamName = value;
-  }
-
-  get TeamLogoName(): string {
-    return this.teamLogoName;
-  }
-
-  set TeamLogoName(value: string) {
-    this.teamLogoName = value;
-  }
+  //
+  //
+  // get TeamId(): number {
+  //   return this.teamID;
+  // }
+  //
+  // set TeamId(value: number) {
+  //   this.teamID = value;
+  // }
+  //
+  // get TeamName(): string {
+  //   return this.teamName;
+  // }
+  //
+  // set TeamName(value: string) {
+  //   this.teamName = value;
+  // }
+  //
+  // get TeamLogoName(): string {
+  //   return this.teamLogoName;
+  // }
+  //
+  // set TeamLogoName(value: string) {
+  //   this.teamLogoName = value;
+  // }
 }

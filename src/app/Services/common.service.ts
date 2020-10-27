@@ -12,16 +12,20 @@ export class CommonService {
   constructor(private _http_:HttpClient) { }
 
   //Get Methods
-  public getTeamOneAllPlayers():Observable<any>{
-    return this._http_.get<any>(this._apiUrl_+"/teamOnePlayers");
-  }
-
-  public getTeamTwoAllPlayers():Observable<any>{
-    return this._http_.get<any>(this._apiUrl_+"/teamTwoPlayers");
+  public geAllPlayers():Observable<any>{
+    return this._http_.get<any>(this._apiUrl_+"/players");
   }
 
   public getAllTeams():Observable<any>{
     return this._http_.get<any>(this._apiUrl_+"/team");
+  }
+
+  public getAllMatchDetails():Observable<any>{
+    return this._http_.get<any>(this._apiUrl_+"/match");
+  }
+
+  public getAllPlayersByTeamId(teamId):Observable<any>{
+    return this._http_.get<any>(this._apiUrl_+"/players/"+teamId);
   }
   //Get Methods
 
@@ -31,12 +35,12 @@ export class CommonService {
     return this._http_.post<any>(this._apiUrl_+"/team",Team);
   }
 
-  public NewPlayerListTeamOne(Players){
-    return this._http_.post<any>(this._apiUrl_+"/teamOnePlayers",Players);
+  public NewPlayerList(Players){
+    return this._http_.post<any>(this._apiUrl_+"/players",Players);
   }
 
-  public NewPlayerListTeamTwo(Players){
-    return this._http_.post<any>(this._apiUrl_+"/teamTwoPlayers",Players);
+  public NewMatch(Match){
+    return this._http_.post<any>(this._apiUrl_+"/match",Match);
   }
 
   //Post Methods
