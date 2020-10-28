@@ -7,6 +7,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddNewBatsmanComponent} from './add-new-batsman/add-new-batsman.component';
 import {AddNewBowlerComponent} from './add-new-bowler/add-new-bowler.component';
 import {CurrentPlayer} from '../../Models/currentPlayer';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import {ShowSnackBar} from '../../SnackBar/ShowSnackBar';
 
 @Component({
   selector: 'app-score-handler',
@@ -14,6 +16,8 @@ import {CurrentPlayer} from '../../Models/currentPlayer';
   styleUrls: ['./score-handler.component.css']
 })
 export class ScoreHandlerComponent implements OnInit {
+
+
 
   LeftSideBatsMan = false;
   RightSideBatsMan = false;
@@ -37,17 +41,25 @@ export class ScoreHandlerComponent implements OnInit {
 
   OnStrikeBatsManID : number;
 
+  //Parameters Related To Score
+
+  teamTotalScore : number = 0;
+  oversCount : number = 1;
+  ballsCount : number = 0;
+  wicketCount : number = 0;
+
+  //Parameters Related To Score
+
   Message = "parent";
   channel = new BroadcastChannel('channel-name');
 
   constructor(private COMMON_SERVICE : CommonService,
-              private _MatDialog: MatDialog) {
+              private _MatDialog: MatDialog,
+              private _SnackBar: MatSnackBar) {
   }
 
 
   ngOnInit(): void {
-    this.FirstBallMarks = "2"
-
     this.fetchCurrentPlayersDetails();
   }
 
@@ -120,13 +132,92 @@ export class ScoreHandlerComponent implements OnInit {
     this.LeftPlayerOnStrikeToggle = !this.LeftPlayerOnStrikeToggle;
     this.RightPlayerOnStrikeToggle = !this.RightPlayerOnStrikeToggle;
     this.OnStrikeBatsManID = this.leftBatMan.playerID;
-    alert("ID " + this.OnStrikeBatsManID);
+    this.ShowMessageBox("Im On Strike Now","Ok");
   }
 
   RightOnStrike() {
     this.LeftPlayerOnStrikeToggle = !this.LeftPlayerOnStrikeToggle;
     this.RightPlayerOnStrikeToggle = !this.RightPlayerOnStrikeToggle;
     this.OnStrikeBatsManID = this.rightBatman.playerID;
-    alert("ID " + this.OnStrikeBatsManID);
+    this.ShowMessageBox("Im On Strike Now","Ok");
   }
+
+
+  //Message Segemetn
+  horizontalPosition : MatSnackBarHorizontalPosition;
+  verticalPosition : MatSnackBarVerticalPosition;
+  ShowMessageBox(message : string , action : string){
+    this._SnackBar.open(message,action , {
+      duration : 2000,
+      horizontalPosition : 'right',
+      verticalPosition : 'top'
+    })
+  }
+
+
+
+  //
+  BattingPlayerScoreChanged(score : number){
+    console.log("score " + score);
+    this.teamTotalScore = this.teamTotalScore + score;
+    this.OversCounter();
+    this.OverDisplayChanger(score.toString());
+  }
+
+  OverDisplayChanger(score : string){
+    if (this.ballsCount == 6){
+      this.SixthBallMarks =  score.toString();
+    }else if (this.ballsCount == 5){
+      this.FifthBallMarks =  score.toString();
+    }else if (this.ballsCount == 4){
+      this.FourthBallMarks =  score.toString();
+    }else if (this.ballsCount == 3){
+      this.ThirdBallMarks =  score.toString();
+    }else if (this.ballsCount == 2){
+      this.SecondBallMarks =  score.toString();
+    }else {
+      this.FirstBallMarks =  score.toString();
+    }
+
+  }
+
+  OversCounter(){
+    this.ballsCount ++;
+    if (this.ballsCount > 6){
+      this.CLeanAllOverDisplay();
+      this.ballsCount = 1;
+      this.oversCount ++;
+    }
+  }
+
+  CLeanAllOverDisplay() {
+    this.SixthBallMarks = null;
+    this.FifthBallMarks = null;
+    this.FourthBallMarks = null;
+    this.ThirdBallMarks = null;
+    this.SecondBallMarks = null;
+    this.FirstBallMarks = null;
+  }
+
+  NoBallCounter() {
+    this.teamTotalScore = this.teamTotalScore + 1;
+    this.OversCounter();
+    this.OverDisplayChanger("NB");
+  }
+
+  WideBallCounter() {
+    this.teamTotalScore = this.teamTotalScore + 1;
+    this.OversCounter();
+    this.OverDisplayChanger("WB");
+  }
+
+  NoBallWithRunsCounter() {
+
+  }
+
+  WideBallWithRunsCounter() {
+
+  }
+
+
 }

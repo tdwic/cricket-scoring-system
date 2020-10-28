@@ -79,33 +79,33 @@
 
               <div class="row">
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">0</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(0)" class="btn btn-danger">0</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-success">1</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(1)" class="btn btn-success">1</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">2</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(2)" class="btn btn-danger">2</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-info">3</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(3)" class="btn btn-info">3</button>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">4</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(4)" class="btn btn-danger">4</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-warning">5</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(5)" class="btn btn-warning">5</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">6</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(6)" class="btn btn-danger">6</button>
                 </div>
 
                 <div class="col pt-3">
@@ -121,7 +121,7 @@
             </div>
           </div>
           <div class="col-md-2 pt-3">
-            10/1 <br/> 0.2 Overs
+            {{teamTotalScore}}/{{wicketCount}} <br/> {{oversCount}}.{{ballsCount}} Overs
           </div>
           <div class="col-md-5 pt-3">
 
@@ -150,33 +150,33 @@
 
               <div class="row">
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">0</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(0)" class="btn btn-danger">0</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-success">1</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(1)" class="btn btn-success">1</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">2</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(2)" class="btn btn-danger">2</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-info">3</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(3)" class="btn btn-info">3</button>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">4</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(4)" class="btn btn-danger">4</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-warning">5</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(5)" class="btn btn-warning">5</button>
                 </div>
 
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-danger">6</button>
+                  <button type="button" (click)="BattingPlayerScoreChanged(6)" class="btn btn-danger">6</button>
                 </div>
 
                 <div class="col pt-3">
@@ -242,19 +242,19 @@
 
         <div class="row">
           <div class="col pt-3">
-            <button type="button" class="btn btn-info">No Ball</button>
+            <button type="button" (click)="NoBallCounter()" class="btn btn-info">No Ball</button>
           </div>
           <div class="col pt-3">
-            <button type="button" class="btn btn-info">No + Runs</button>
+            <button type="button" (click)="NoBallWithRunsCounter()" class="btn btn-info">No + Runs</button>
           </div>
         </div>
 
         <div class="row">
           <div class="col pt-3">
-            <button mat-raised-button color="warn">Wide Ball</button>
+            <button mat-raised-button (click)="WideBallCounter()" color="warn">Wide Ball</button>
           </div>
           <div class="col pt-3">
-            <button mat-raised-button color="warn">Wide + Runs</button>
+            <button mat-raised-button (click)="WideBallWithRunsCounter()" color="warn">Wide + Runs</button>
           </div>
         </div>
 
