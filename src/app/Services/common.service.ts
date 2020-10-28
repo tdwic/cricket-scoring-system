@@ -27,6 +27,10 @@ export class CommonService {
   public getAllPlayersByTeamId(teamId):Observable<any>{
     return this._http_.get<any>(this._apiUrl_+"/players/"+teamId);
   }
+
+  public getAllCurrentPlayers():Observable<any>{
+    return this._http_.get<any>(this._apiUrl_+"/currentPlayer");
+  }
   //Get Methods
 
 
@@ -43,5 +47,8 @@ export class CommonService {
     return this._http_.post<any>(this._apiUrl_+"/match",Match);
   }
 
+  public NewCurrentPlayer(CurrentPlayer){
+    return this._http_.post<any>(this._apiUrl_+"/currentPlayer",CurrentPlayer);
+  }
   //Post Methods
 }

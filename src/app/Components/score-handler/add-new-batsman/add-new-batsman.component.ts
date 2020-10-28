@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { CommonService } from 'src/app/Services/common.service';
 import {Match} from '../../../Models/match';
 import {Player} from '../../../Models/player';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CurrentPlayer} from '../../../Models/currentPlayer';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-new-batsman',
@@ -11,13 +14,25 @@ import {Player} from '../../../Models/player';
 export class AddNewBatsmanComponent implements OnInit {
 
   matchDetails : Match[];
-  playersList : Player[]
+  playersList : Player[];
+  currentPlayer : CurrentPlayer;
   battingTeamId : number;
+  selectedPlayerId:number;
+  batsmanSide:string;
+  battingPlayerForm : FormGroup;
 
-  constructor(private COMMON_SERVICE : CommonService) { }
+  constructor(private COMMON_SERVICE : CommonService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.batsmanSide = data.side;
+  }
 
   ngOnInit(): void {
     this.fetchMatchDetails();
+
+    this.battingPlayerForm = new FormGroup({
+      selectedPlayer:new FormControl('',[Validators.required])
+    })
+
   }
 
   fetchMatchDetails(){
@@ -40,6 +55,24 @@ export class AddNewBatsmanComponent implements OnInit {
     },error => {
       console.log("err "+error);
     });
+  }
+
+  submitSelectedPlayer(){
+    this.selectedPlayerId = this.battingPlayerForm.controls['selectedPlayer'].value;
+    console.log("valur "+this.battingPlayerForm.controls['selectedPlayer'].value);
+    for (let player of this.playersList){
+      if (player.playerID == this.selectedPlayerId){
+        this.currentPlayer = new CurrentPlayer( player.playerID,player.playerName,"batting",this.batsmanSide);
+      }
+    }
+    console.log("current Plyer "+ this.currentPlayer.playerName);
+
+    this.COMMON_SERVICE.NewCurrentPlayer(this.currentPlayer).subscribe( res => {
+      console.log(res);
+    },error => {
+      console.log("err "+error);
+    })
+
   }
 
 

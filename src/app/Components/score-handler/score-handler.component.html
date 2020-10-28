@@ -1,49 +1,51 @@
 <div>
   <div class="container-fluid">
 
-    <div class="row">
+    <div class="row" *ngIf="!BowlerToggle">
       <div class="col pt-3">
         <button type="button" (click)="addNewBowler()" class="btn btn-success">Add New Over</button>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col pt-3">
-        1st Ball
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" *ngIf="FirstBallMarks != null" selected>{{FirstBallMarks}}</mat-chip>
-        </mat-chip-list>
-      </div>
-      <div class="col pt-3">
-        2st Ball
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" *ngIf="SecondBallMarks != null" selected>{{SecondBallMarks}}</mat-chip>
-        </mat-chip-list>
-      </div>
-      <div class="col pt-3">
-        3st Ball
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" *ngIf="ThirdBallMarks != null" selected>{{ThirdBallMarks}}</mat-chip>
-        </mat-chip-list>
-      </div>
-      <div class="col pt-3">
-        4st Ball
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" *ngIf="FourthBallMarks != null" selected>{{FourthBallMarks}}</mat-chip>
-        </mat-chip-list>
-      </div>
-      <div class="col pt-3">
-        5st Ball
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" *ngIf="FifthBallMarks != null" selected>{{FifthBallMarks}}</mat-chip>
-        </mat-chip-list>
-      </div>
-      <div class="col pt-3">
-        6st Ball
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip color="primary" *ngIf="SixthBallMarks != null" selected>{{SixthBallMarks}}</mat-chip>
-        </mat-chip-list>
-      </div>
+    <div class="row" *ngIf="BowlerToggle">
+<!--      <div class="overs-row">-->
+        <div class="col pt-3">
+          1st Ball
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngIf="FirstBallMarks != null" selected>{{FirstBallMarks}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col pt-3">
+          2st Ball
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngIf="SecondBallMarks != null" selected>{{SecondBallMarks}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col pt-3">
+          3st Ball
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngIf="ThirdBallMarks != null" selected>{{ThirdBallMarks}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col pt-3">
+          4st Ball
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngIf="FourthBallMarks != null" selected>{{FourthBallMarks}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col pt-3">
+          5st Ball
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngIf="FifthBallMarks != null" selected>{{FifthBallMarks}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col pt-3">
+          6st Ball
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngIf="SixthBallMarks != null" selected>{{SixthBallMarks}}</mat-chip>
+          </mat-chip-list>
+        </div>
+<!--      </div>-->
     </div>
 
     <div class="row">
@@ -61,10 +63,10 @@
               </div>
             </div>
 
-            <div class="left-player" *ngIf="LeftSideBatsMan">
+            <div class="left-player" [style.background-color]="LeftPlayerOnStrikeToggle ? '#36d160' : 'white'" *ngIf="LeftSideBatsMan">
               <div class="row">
                 <div class="col">
-                  <span>Demo Player 1</span>
+                  <span>{{leftBatMan.playerName}}</span>
                 </div>
               </div>
 
@@ -112,7 +114,7 @@
 
               <div class="row">
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-success">I an on Strike</button>
+                  <button type="button"[disabled]="LeftPlayerOnStrikeToggle" (click)="LeftOnStrike()" class="btn btn-success">I an on Strike</button>
                 </div>
               </div>
 
@@ -131,11 +133,11 @@
               </div>
             </div>
 
-            <div class="right-player" *ngIf="RightSideBatsMan">
+            <div class="right-player" [style.background-color]="RightPlayerOnStrikeToggle ? '#36d160' : 'white'" *ngIf="RightSideBatsMan">
 
               <div class="row">
                 <div class="col">
-                  <span>Demo Player 2</span>
+                  <span>{{rightBatman.playerName}}</span>
                 </div>
               </div>
 
@@ -183,7 +185,7 @@
 
               <div class="row">
                 <div class="col pt-3">
-                  <button type="button" class="btn btn-success">I an on Strike</button>
+                  <button type="button" [disabled]="RightPlayerOnStrikeToggle" (click)="RightOnStrike()" class="btn btn-success">I an on Strike</button>
                 </div>
               </div>
 

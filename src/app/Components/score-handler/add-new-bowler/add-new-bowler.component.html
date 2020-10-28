@@ -5,19 +5,24 @@
     </div>
   </div>
 
+  <form [formGroup]="bowlingPlayerForm" (ngSubmit)="submitSelectedPlayer()">
   <div class="row">
     <div class="col">
-      <mat-selection-list #players [multiple]="false">
-        <mat-list-option *ngFor="let player of playersList" value="{{player.playerID}}{{'|'}}{{player.playerName}}">
+      <mat-selection-list formControlName="selectedPlayer" #players [multiple]="false">
+        <mat-list-option *ngFor="let player of playersList" value="{{player.playerID}}">
           {{player.playerName}}&nbsp;{{player.battingStyle}}&nbsp;{{player.bowlingStyle}}
         </mat-list-option>
       </mat-selection-list>
-
-      <p>
-        Option selected: {{players.selectedOptions.selected[0]?.value}}
-      </p>
-
     </div>
   </div>
+
+    <div class="row">
+      <div class="col-md-10 col-lg-10"></div>
+      <div class="col-md-2 col-lg-2">
+        <button mat-raised-button mat-dialog-close color="primary" type="submit">Submit</button>&nbsp;
+        <button mat-raised-button mat-dialog-close="false" color="warn" type="reset">Cancel</button>
+      </div>
+    </div>
+  </form>
 
 </div>

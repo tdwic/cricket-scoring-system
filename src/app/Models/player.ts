@@ -1,12 +1,12 @@
 export class Player{
-  playerID:string;
+  playerID:number;
   playerName:string;
   playerTeamId:number;
   battingStyle:string;
   bowlingStyle:string
 
 
-  constructor(playerID: string, playerName: string, playerTeamId: number, battingStyle: string, bowlingStyle: string) {
+  constructor(playerID: number, playerName: string, playerTeamId: number, battingStyle: string, bowlingStyle: string) {
     this.playerID = playerID;
     this.playerName = playerName;
     this.playerTeamId = playerTeamId;
