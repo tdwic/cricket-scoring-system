@@ -166,33 +166,61 @@ export class ScoreHandlerComponent implements OnInit {
    */
 
   BattingPlayerScoreChanged(score : number){
-    console.log("score " + score);
-    this.teamTotalScore = this.teamTotalScore + score;
-    this.OversCounter();
-    this.OverDisplayChanger(score.toString());
+
+    if (this.bowler != null){
+      console.log("score " + score);
+      this.teamTotalScore = this.teamTotalScore + score;
+      this.OversCounter();
+      this.OverDisplayChanger(score.toString());
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
+
   }
 
-  ByeRunsCounter(){
+  ByeRunsCounter(byeRunValue : number){
+    if (this.bowler != null){
+      this.teamTotalScore = this.teamTotalScore + byeRunValue;
+      this.OversCounter();
+      this.OverDisplayChanger((byeRunValue+"B").toString());
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
 
   }
 
-  LegByeRunsCounter(){
-    
+  LegByeRunsCounter(legByrRunValue : number){
+    if (this.bowler != null){
+      this.teamTotalScore = this.teamTotalScore + legByrRunValue;
+      this.OversCounter();
+      this.OverDisplayChanger((legByrRunValue+"LB").toString());
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
   }
 
   /**
    * No ball button
    */
   NoBallCounter() {
-    this.teamTotalScore = this.teamTotalScore + 1;
-    this.OversCounter();
-    this.OverDisplayChanger("NB");
+    if (this.bowler != null){
+      this.teamTotalScore = this.teamTotalScore + 1;
+      this.OversCounter();
+      this.OverDisplayChanger("NB");
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
   }
 
     /**
    * no ball with runs
    */
   NoBallWithRunsCounter() {
+    if (this.bowler != null){
+
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
 
   }
 
@@ -200,16 +228,24 @@ export class ScoreHandlerComponent implements OnInit {
    * wide ball button
    */
   WideBallCounter() {
-    this.teamTotalScore = this.teamTotalScore + 1;
-    this.OversCounter();
-    this.OverDisplayChanger("WB");
+    if (this.bowler != null){
+      this.teamTotalScore = this.teamTotalScore + 1;
+      this.OversCounter();
+      this.OverDisplayChanger("WB");
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
   }
 
   /**
    * wide ball with runs
    */
   WideBallWithRunsCounter() {
+    if (this.bowler != null){
 
+    }else{
+      this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
+    }
   }
 
 //Functions for all button events
