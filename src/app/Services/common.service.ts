@@ -50,5 +50,9 @@ export class CommonService {
   public NewCurrentPlayer(CurrentPlayer){
     return this._http_.post<any>(this._apiUrl_+"/currentPlayer",CurrentPlayer);
   }
+
+  public RemoveCurrentPlayerByPlayerId(CurrentPlayer){
+    return this._http_.post<any>(this._apiUrl_+"/removeCurrentPlayer",CurrentPlayer);
+  }
   //Post Methods
 }

@@ -39,6 +39,8 @@ export class ScoreHandlerComponent implements OnInit {
   rightBatman : Player;
   bowler : Player;
 
+  playerDto : Player;
+
   OnStrikeBatsManID : number;
 
   //Parameters Related To Score
@@ -156,13 +158,61 @@ export class ScoreHandlerComponent implements OnInit {
 
 
 
-  //
+//Functions for all button events
+
+  /**
+   * playerRuns
+   * @param score 
+   */
+
   BattingPlayerScoreChanged(score : number){
     console.log("score " + score);
     this.teamTotalScore = this.teamTotalScore + score;
     this.OversCounter();
     this.OverDisplayChanger(score.toString());
   }
+
+  ByeRunsCounter(){
+
+  }
+
+  LegByeRunsCounter(){
+    
+  }
+
+  /**
+   * No ball button
+   */
+  NoBallCounter() {
+    this.teamTotalScore = this.teamTotalScore + 1;
+    this.OversCounter();
+    this.OverDisplayChanger("NB");
+  }
+
+    /**
+   * no ball with runs
+   */
+  NoBallWithRunsCounter() {
+
+  }
+
+  /**
+   * wide ball button
+   */
+  WideBallCounter() {
+    this.teamTotalScore = this.teamTotalScore + 1;
+    this.OversCounter();
+    this.OverDisplayChanger("WB");
+  }
+
+  /**
+   * wide ball with runs
+   */
+  WideBallWithRunsCounter() {
+
+  }
+
+//Functions for all button events
 
   OverDisplayChanger(score : string){
     if (this.ballsCount == 6){
@@ -183,6 +233,11 @@ export class ScoreHandlerComponent implements OnInit {
 
   OversCounter(){
     this.ballsCount ++;
+
+    if (this.ballsCount == 6){
+      this.RemoveBallerFromCurrentPlayerDB(this.bowler.playerID);
+    }
+
     if (this.ballsCount > 6){
       this.CLeanAllOverDisplay();
       this.ballsCount = 1;
@@ -199,25 +254,14 @@ export class ScoreHandlerComponent implements OnInit {
     this.FirstBallMarks = null;
   }
 
-  NoBallCounter() {
-    this.teamTotalScore = this.teamTotalScore + 1;
-    this.OversCounter();
-    this.OverDisplayChanger("NB");
+  RemoveBallerFromCurrentPlayerDB(playerID : number){
+    this.playerDto = new Player(playerID,null,null,null,null);
+
+    this.COMMON_SERVICE.RemoveCurrentPlayerByPlayerId(this.playerDto).subscribe( res => {
+      this.fetchCurrentPlayersDetails();
+    }, error => {
+      console.log("error " + error);
+    });
   }
-
-  WideBallCounter() {
-    this.teamTotalScore = this.teamTotalScore + 1;
-    this.OversCounter();
-    this.OverDisplayChanger("WB");
-  }
-
-  NoBallWithRunsCounter() {
-
-  }
-
-  WideBallWithRunsCounter() {
-
-  }
-
 
 }
