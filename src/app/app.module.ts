@@ -26,6 +26,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
 import { AddNewBowlerComponent } from './Components/score-handler/add-new-bowler/add-new-bowler.component';
 import { AddNewBatsmanComponent } from './Components/score-handler/add-new-batsman/add-new-batsman.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AddNewBatsmanComponent } from './Components/score-handler/add-new-batsm
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

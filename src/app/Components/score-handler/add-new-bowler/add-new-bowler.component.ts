@@ -62,7 +62,7 @@ export class AddNewBowlerComponent implements OnInit {
     console.log("valur "+this.bowlingPlayerForm.controls['selectedPlayer'].value);
     for (let player of this.playersList){
       if (player.playerID == this.selectedPlayerId){
-        this.currentPlayer = new CurrentPlayer( player.playerID,player.playerName,"bawling",this.bowlerSide);
+        this.currentPlayer = new CurrentPlayer( player.playerID,player.playerName,"bawling",this.bowlerSide,"no-strike");
       }
     }
     console.log("current Plyer "+ this.currentPlayer.playerName);
@@ -71,6 +71,6 @@ export class AddNewBowlerComponent implements OnInit {
       console.log(res);
     },error => {
       console.log("err "+error);
-    })
+    });
   }
 }

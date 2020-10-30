@@ -62,7 +62,7 @@ export class AddNewBatsmanComponent implements OnInit {
     console.log("valur "+this.battingPlayerForm.controls['selectedPlayer'].value);
     for (let player of this.playersList){
       if (player.playerID == this.selectedPlayerId){
-        this.currentPlayer = new CurrentPlayer( player.playerID,player.playerName,"batting",this.batsmanSide);
+        this.currentPlayer = new CurrentPlayer( player.playerID,player.playerName,"batting",this.batsmanSide,"no-strike");
       }
     }
     console.log("current Plyer "+ this.currentPlayer.playerName);

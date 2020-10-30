@@ -34,12 +34,15 @@ export class ScoreHandlerComponent implements OnInit {
   SixthBallMarks: string;
 
   currentPlayers : CurrentPlayer[];
+  strikeUpdateDtoLeft : CurrentPlayer;
+  strikeUpdateDtoRight : CurrentPlayer;
 
   leftBatMan : Player;
   rightBatman : Player;
   bowler : Player;
 
   playerDto : Player;
+  CurrentPlayerDto : CurrentPlayer;
 
   OnStrikeBatsManID : number;
 
@@ -112,10 +115,23 @@ export class ScoreHandlerComponent implements OnInit {
       this.currentPlayers = res;
 
       for (let player of this.currentPlayers){
+
+        if (player.strikeStatus === "on-strike" && player.playerBattingSideForUI === "left"){
+          this.LeftPlayerOnStrikeToggle = true;
+          this.RightPlayerOnStrikeToggle = false;
+          this.OnStrikeBatsManID = player.playerID;
+        }else if (player.strikeStatus === "on-strike" && player.playerBattingSideForUI === "right"){
+          this.LeftPlayerOnStrikeToggle = false;
+          this.RightPlayerOnStrikeToggle = true;
+          this.OnStrikeBatsManID = player.playerID;
+        }
+
         if (player.playerRole === "batting" && player.playerBattingSideForUI === "left"){
+          this.strikeUpdateDtoLeft = player;
           this.leftBatMan = new Player(player.playerID,player.playerName,null,null,null);
           this.LeftSideBatsMan = true;
         }else if (player.playerRole === "batting" && player.playerBattingSideForUI === "right"){
+          this.strikeUpdateDtoRight = player;
           this.rightBatman = new Player(player.playerID,player.playerName,null,null,null);
           this.RightSideBatsMan = true;
         }else {
@@ -134,16 +150,31 @@ export class ScoreHandlerComponent implements OnInit {
     this.LeftPlayerOnStrikeToggle = !this.LeftPlayerOnStrikeToggle;
     this.RightPlayerOnStrikeToggle = !this.RightPlayerOnStrikeToggle;
     this.OnStrikeBatsManID = this.leftBatMan.playerID;
-    this.ShowMessageBox("Im On Strike Now","Ok");
+    this.UpdatePlyerStrikeStatus(this.strikeUpdateDtoLeft);
   }
 
   RightOnStrike() {
     this.LeftPlayerOnStrikeToggle = !this.LeftPlayerOnStrikeToggle;
     this.RightPlayerOnStrikeToggle = !this.RightPlayerOnStrikeToggle;
     this.OnStrikeBatsManID = this.rightBatman.playerID;
-    this.ShowMessageBox("Im On Strike Now","Ok");
+    this.UpdatePlyerStrikeStatus(this.strikeUpdateDtoRight);
   }
 
+  UpdatePlyerStrikeStatus(strikePlayer : CurrentPlayer){
+    this.CurrentPlayerDto = new CurrentPlayer(strikePlayer.playerID,
+                                              strikePlayer.playerName,
+                                              strikePlayer.playerRole,
+                                              strikePlayer.playerBattingSideForUI,
+                                              "on-strike");
+
+    this.COMMON_SERVICE.NewCurrentPlayer(this.CurrentPlayerDto).subscribe( res => {
+      console.log(res);
+      this.ShowMessageBox("Im On Strike Now","Ok");
+    },error => {
+      console.log("err "+error);
+    });
+
+  }
 
   //Message Segemetn
   horizontalPosition : MatSnackBarHorizontalPosition;
@@ -162,7 +193,7 @@ export class ScoreHandlerComponent implements OnInit {
 
   /**
    * playerRuns
-   * @param score 
+   * @param score
    */
 
   BattingPlayerScoreChanged(score : number){
@@ -178,6 +209,70 @@ export class ScoreHandlerComponent implements OnInit {
 
   }
 
+  BattingPlayerOutCounter(outType : string){
+    switch (outType) {
+      case 'balled' : {
+        console.log("balled");
+        this.wicketCount ++;
+        this.playerDto = new Player(this.OnStrikeBatsManID,null,null,null,null);
+
+        this.COMMON_SERVICE.RemoveCurrentPlayerByPlayerId(this.playerDto).subscribe( res => {
+          this.fetchCurrentPlayersDetails();
+        }, error => {
+          console.log("error " + error);
+        });
+
+        break;
+      }
+      case 'caught' : {
+        console.log("caught");
+        break;
+      }
+      case 'stumped' : {
+        console.log("stumped");
+        break;
+      }
+      case 'run-out' : {
+        console.log("run-out");
+        break;
+      }
+      case 'lbw' : {
+        console.log("lbw");
+        break;
+      }
+      case 'hit-wicket' : {
+        console.log("hit-wicket");
+        break;
+      }
+      case 'retired-hit' : {
+        console.log("retired-hit");
+        break;
+      }
+      case 'handled-ball' : {
+        console.log("handled-ball");
+        break;
+      }
+      case 'hit-ball-twice' : {
+        console.log("hit-ball-twice");
+        break;
+      }
+      case 'time-out' : {
+        console.log("time-out");
+        break;
+      }
+      case 'obstruction-the-field' : {
+        console.log("obstruction-the-field");
+        break;
+      }
+    }
+  }
+
+  /**
+   * Byen runs value counter
+   * @param byeRunValue
+   * @constructor
+   */
+
   ByeRunsCounter(byeRunValue : number){
     if (this.bowler != null){
       this.teamTotalScore = this.teamTotalScore + byeRunValue;
@@ -186,7 +281,6 @@ export class ScoreHandlerComponent implements OnInit {
     }else{
       this.ShowMessageBox("Please Select Baller Befor Start Scoring!" , "ok");
     }
-
   }
 
   LegByeRunsCounter(legByrRunValue : number){

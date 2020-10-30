@@ -206,13 +206,13 @@
       <div class="col">
         <div class="row">
           <div class="col pt-3">
-            <button type="button" class="btn btn-danger">Bowled</button>
+            <button type="button" (click)="BattingPlayerOutCounter('balled')" class="btn btn-danger">Bowled</button>
           </div>
           <div class="col pt-3">
-            <button type="button" class="btn btn-danger">Caught</button>
+            <button type="button" (click)="BattingPlayerOutCounter('caught')" class="btn btn-danger">Caught</button>
           </div>
           <div class="col pt-3">
-            <button type="button" class="btn btn-danger">Stumped</button>
+            <button type="button" (click)="BattingPlayerOutCounter('stumped')" class="btn btn-danger">Stumped</button>
           </div>
         </div>
 
@@ -268,13 +268,21 @@
       <div class="col">
         <div class="row">
           <div class="col pt-3">
-            <button type="button" class="btn btn-danger">Run Out</button>
+            <button type="button" (click)="BattingPlayerOutCounter('run-out')" class="btn btn-danger">Run Out</button>
           </div>
           <div class="col pt-3">
-            <button type="button" class="btn btn-danger">LBW</button>
+            <button type="button" (click)="BattingPlayerOutCounter('lbw')" class="btn btn-danger">LBW</button>
           </div>
           <div class="col pt-3">
-            <button type="button" class="btn btn-danger">Other</button>
+            <button type="button" [matMenuTriggerFor]="aboveMenu" class="btn btn-danger">Other</button>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+              <button mat-menu-item (click)="BattingPlayerOutCounter('hit-wicket')">Hit Wicket</button>
+              <button mat-menu-item (click)="BattingPlayerOutCounter('retired-hit')">Retired Hit</button>
+              <button mat-menu-item (click)="BattingPlayerOutCounter('handled-ball')">Handled Ball</button>
+              <button mat-menu-item (click)="BattingPlayerOutCounter('hit-ball-twice')">Hit Ball Twice</button>
+              <button mat-menu-item (click)="BattingPlayerOutCounter('time-out')">Timed Out</button>
+              <button mat-menu-item (click)="BattingPlayerOutCounter('obstruction-the-field')">Obstruction The Field</button>
+            </mat-menu>
           </div>
         </div>
 
