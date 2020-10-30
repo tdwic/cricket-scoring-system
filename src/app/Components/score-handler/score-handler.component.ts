@@ -23,7 +23,7 @@ export class ScoreHandlerComponent implements OnInit {
   RightSideBatsMan = false;
   BowlerToggle = false;
 
-  LeftPlayerOnStrikeToggle = true;
+  LeftPlayerOnStrikeToggle = false;
   RightPlayerOnStrikeToggle = false;
 
   FirstBallMarks: string;
@@ -147,15 +147,15 @@ export class ScoreHandlerComponent implements OnInit {
 
 
   LeftOnStrike() {
-    this.LeftPlayerOnStrikeToggle = !this.LeftPlayerOnStrikeToggle;
-    this.RightPlayerOnStrikeToggle = !this.RightPlayerOnStrikeToggle;
+    this.LeftPlayerOnStrikeToggle = true;
+    this.RightPlayerOnStrikeToggle = false;
     this.OnStrikeBatsManID = this.leftBatMan.playerID;
     this.UpdatePlyerStrikeStatus(this.strikeUpdateDtoLeft);
   }
 
   RightOnStrike() {
-    this.LeftPlayerOnStrikeToggle = !this.LeftPlayerOnStrikeToggle;
-    this.RightPlayerOnStrikeToggle = !this.RightPlayerOnStrikeToggle;
+    this.LeftPlayerOnStrikeToggle = false;
+    this.RightPlayerOnStrikeToggle = true;
     this.OnStrikeBatsManID = this.rightBatman.playerID;
     this.UpdatePlyerStrikeStatus(this.strikeUpdateDtoRight);
   }
